@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { MediaProvider } from '../../providers/media/media';
 import { Pic } from '../../interface/pic';
-import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -10,24 +10,26 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HomePage {
   picArray: Pic[] = [];
-  mediaPath = 'http://media.mw.metropolia.fi/wbma/';
-  constructor(public navCtrl: NavController, private http: HttpClient) {
+
+  constructor(public navCtrl: NavController, private mediaProvider: MediaProvider) {
   }
 
   ngOnInit() {
-    this.getImages();
+    this.getAllFiles();
   }
-
-  getImages() {
-    this.http.get<Pic[]>(this.mediaPath + 'media/').subscribe(
+  getAllFiles() {
+    this.mediaProvider.getAllMedia().subscribe(
       (res: Pic[]) => {
         this.picArray = res;
         this.picArray.forEach(element => {
           const split = element.filename.split('.');
           element.filename = split[0];
+          element.thumbnails = {
+            '160': split[0] + '-tn160.png'
+          };
         });
       },
-            (error) => {
+      (error) => {
         console.log(error);
       }
     );

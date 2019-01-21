@@ -10,7 +10,7 @@
   <ion-list>
     <ion-item *ngFor="let item of picArray">
       <ion-thumbnail item-start>
-        <img src='http://media.mw.metropolia.fi/wbma/uploads/{{item.filename}}-tn160.png'>
+        <img src='http://media.mw.metropolia.fi/wbma/uploads/{{item.thumbnails["160"]}}'>
       </ion-thumbnail>
       <p>{{item.title}}</p>
       <p>{{item.description}}</p>
