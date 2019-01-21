@@ -1,18 +1,18 @@
-
-
 export interface Pic {
-  file_id: number;
-  user_id: number;
-  filesize: number;
-  media_type: string;
+  file_id: string;
+  filename: string;
   title: string;
   description: string;
-  filename: string;
+  user_id: string;
+  media_type: string;
   mime_type: string;
   time_added: string;
   screenshot?: string;
-  thumbnails?: Thumbnail;
+  thumbnails?: Thumbnails;
 }
-export interface Thumbnail {
+
+export interface Thumbnails {
   160: string;
+  320?: string;
+  640?: string;
 }

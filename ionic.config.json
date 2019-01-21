@@ -1,7 +1,5 @@
 {
-  "name": "myFirstApp",
-  "integrations": {
-    "cordova": {}
-  },
+  "name": "New Ionic App",
+  "integrations": {},
   "type": "ionic-angular"
 }
