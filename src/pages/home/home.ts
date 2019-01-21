@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HomePage {
   picArray: Pic[] = [];
-  mediaPath = 'http://media.mw.metropolia.fi/wbma/media/';
+  mediaPath = 'http://media.mw.metropolia.fi/wbma/';
   constructor(public navCtrl: NavController, private http: HttpClient) {
   }
 
@@ -19,7 +19,7 @@ export class HomePage {
   }
 
   getImages() {
-    this.http.get<Pic[]>(this.mediaPath).subscribe(
+    this.http.get<Pic[]>(this.mediaPath + 'media/').subscribe(
       (res: Pic[]) => {
         this.picArray = res;
         this.picArray.forEach(element => {
