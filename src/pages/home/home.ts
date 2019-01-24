@@ -16,6 +16,18 @@ export class HomePage {
 
   ionViewDidLoad() {
     this.getAllFiles();
+    console.log('ionViewWillEnterS LoginRegisterPage');
+    if (localStorage.getItem("token") != null && this.mediaProvider.loggedIn == false) {
+      this.mediaProvider.getUser().subscribe(
+        res => {
+          this.mediaProvider.loggedIn = true;
+          console.log(res);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
   }
 
   getAllFiles() {

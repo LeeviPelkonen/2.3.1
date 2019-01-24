@@ -8,11 +8,17 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { HttpClientModule } from "@angular/common/http";
 import { MediaProvider } from '../providers/media/media';
+import { MenuPage } from '../pages/menu/menu';
+import { LoginRegisterPage } from '../pages/login-register/login-register';
+import { LogoutPage } from '../pages/logout/logout';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    MenuPage,
+    LoginRegisterPage,
+    LogoutPage
   ],
   imports: [
     BrowserModule,
@@ -22,7 +28,10 @@ import { MediaProvider } from '../providers/media/media';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    MenuPage,
+    LoginRegisterPage,
+    LogoutPage
   ],
   providers: [
     StatusBar,
