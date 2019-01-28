@@ -29,7 +29,16 @@ export class MediaProvider {
       headers: new HttpHeaders({
         'content-type': 'application/json'
       })};
-    return this.http.post<LoginResponse>(this.mediaPath + 'login/', user, httpOptions);
+    return this.http.post<LoginResponse>(this.mediaPath + 'profile/', user, httpOptions);
+  }
+
+  getTag(){
+    console.log("getting tag");
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'x-access-token': localStorage.getItem("token")
+      })};
+    return this.http.get<any>(this.mediaPath + 'tags/', httpOptions);
   }
 
   getUser(){

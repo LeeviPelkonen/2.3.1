@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { MediaProvider } from "../../providers/media/media";
 import { HomePage } from "../home/home";
+import { Observable } from "rxjs";
+import { Pic,} from "../../interface/pic";
 
 /**
  * Generated class for the LogoutPage page.
@@ -12,16 +14,15 @@ import { HomePage } from "../home/home";
 
 @Component({
   selector: 'page-logout',
-  templateUrl: 'logout.html',
+  templateUrl: 'profile.html',
 })
-export class LogoutPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public mediaProvider: MediaProvider) {
-  }
+export class ProfilePage {
+ // constructor(public navCtrl: NavController, public navParams: NavParams, public mediaProvider: MediaProvider) {
+  //}
 
   ionViewWillEnter() {
-    localStorage.clear();
-    this.mediaProvider.loggedIn = false;
-    this.navCtrl.push(HomePage);
+    //localStorage.clear();
+    //this.mediaProvider.loggedIn = false;
+    //this.navCtrl.push(HomePage);
   }
 }

@@ -40,7 +40,6 @@ export class LoginRegisterPage {
         this.navCtrl.push(HomePage);
       },
       error => {
-        console.log(error);
       });
   }
   register(){
@@ -53,7 +52,5 @@ export class LoginRegisterPage {
         console.log(error);
       });
   }
-
-  //TODO add register method
 
 }
