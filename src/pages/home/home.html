@@ -8,7 +8,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-item ion-item *ngFor="let item of picArray | async" (click)="itemSelected(item)">
+    <ion-item *ngFor="let item of picArray | async" (click)="itemSelected(item)">
       <ion-thumbnail item-start>
         <img src='http://media.mw.metropolia.fi/wbma/uploads/{{ item.file_id  | thumbnail | async }}' item-start="" width="60" height="60">
       </ion-thumbnail>

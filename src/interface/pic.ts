@@ -33,6 +33,5 @@ export interface LoginResponse {
 }
 
 export interface AutoLoginResponse {
-  status: number;
   user: User;
 }

@@ -38,7 +38,7 @@ export class MediaProvider {
       headers: new HttpHeaders({
         'x-access-token': localStorage.getItem("token")
       })};
-    return this.http.get<AutoLoginResponse>(this.mediaPath + 'users/user/', httpOptions);
+    return this.http.get<User>(this.mediaPath + 'users/user/', httpOptions);
   }
 
   register(user: User){

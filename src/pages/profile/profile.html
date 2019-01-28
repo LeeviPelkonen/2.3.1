@@ -14,5 +14,12 @@
 
 
 <ion-content padding>
-
+  <ion-card *ngIf="(userProfile | async) as item">
+    <ion-item>
+      <p>{{item.username}}</p>
+    </ion-item>
+    <ion-item>
+      <p>{{item.email}}</p>
+    </ion-item>
+  </ion-card>
 </ion-content>
