@@ -11,17 +11,15 @@ import { HomePage } from "../home/home";
  */
 
 @Component({
-  selector: 'page-logout',
-  templateUrl: 'logout.html',
+  selector: 'page-profile',
+  templateUrl: 'profile.html',
 })
-export class LogoutPage {
+export class ProfilePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public mediaProvider: MediaProvider) {
   }
 
   ionViewWillEnter() {
-    localStorage.clear();
-    this.mediaProvider.loggedIn = false;
-    this.navCtrl.push(HomePage);
+
   }
 }
