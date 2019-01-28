@@ -11,6 +11,7 @@ import { MediaProvider } from '../providers/media/media';
 import { MenuPage } from '../pages/menu/menu';
 import { LoginRegisterPage } from '../pages/login-register/login-register';
 import { LogoutPage } from '../pages/logout/logout';
+import { ThumbnailPipe } from "../pipes/thumbnail/thumbnail";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { LogoutPage } from '../pages/logout/logout';
     HomePage,
     MenuPage,
     LoginRegisterPage,
-    LogoutPage
+    LogoutPage,
+    ThumbnailPipe
   ],
   imports: [
     BrowserModule,
