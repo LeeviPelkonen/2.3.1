@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { MediaProvider } from "../../providers/media/media";
-import { Pic } from "../../interface/pic";
+import { MediaProvider } from '../../providers/media/media';
+import { Pic } from '../../interface/pic';
 
 /**
  * Generated class for the ThumbnailPipe pipe.
@@ -12,24 +12,8 @@ import { Pic } from "../../interface/pic";
 })
 export class ThumbnailPipe implements PipeTransform {
   thumbnail = '';
-
-  //cachedID: any;
   constructor(private mediaProvider: MediaProvider) {
-
   }
-
-  /*
-  transform(id: number, ...args) {
-    if (this.cachedID !== id) {
-      //this.thumbnail = null;
-      this.cachedID = id;
-      this.mediaProvider.getSingleMedia(id).subscribe((response: Pic) => {
-        this.thumbnail = response.thumbnails.w160;
-      });
-      return this.thumbnail;
-    }
-  }
-  */
   transform(id: number, ...args) {
     return new Promise((resolve, reject) => {
       this.mediaProvider.getSingleMedia(id).subscribe((response: Pic) => {

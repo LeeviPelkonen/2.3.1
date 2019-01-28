@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { MediaProvider } from "../../providers/media/media";
 import { HomePage } from "../home/home";
-import { User } from "../../interface/pic";
+import { Pic, Tag, User } from "../../interface/pic";
 import { Observable } from "rxjs";
 
 /**
@@ -18,6 +18,7 @@ import { Observable } from "rxjs";
 })
 export class ProfilePage {
   userProfile: Observable<User>;
+  imageId: Observable<Pic>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public mediaProvider: MediaProvider) {
   }
@@ -28,11 +29,22 @@ export class ProfilePage {
 
   getProfile(){
     this.userProfile = this.mediaProvider.getUser()
+    return new Promise((resolve, reject) => {
+      this.mediaProvider.getTags("profile").subscribe((response: Tag[]) => {
+        function filterTag(imgTag: Tag) {
+          if(imgTag.user_id == localStorage.getItem("user_id")){
+            return true
+          }else return false;
+        }
+        let tagArray = response.filter(filterTag)
+        this.imageId = this.mediaProvider.getSingleMedia(tagArray[0].file_id)
+      });
+    });
   }
-
   logout(){
     localStorage.clear();
     this.mediaProvider.loggedIn = false;
     this.navCtrl.push(HomePage);
   }
+
 }

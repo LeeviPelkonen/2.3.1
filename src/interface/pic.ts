@@ -24,6 +24,7 @@ export interface User {
   email?: string;
   full_name?: string;
   time_created?: Date;
+  user_image_id?: number;
 }
 
 export interface LoginResponse {
@@ -32,6 +33,15 @@ export interface LoginResponse {
   user: User;
 }
 
-export interface AutoLoginResponse {
-  user: User;
+export interface Tag {
+  file_id: number,
+  tag: string,
+  user_id: string
+  filename: string,
+  filesize: number,
+  title: string,
+  description: string,
+  media_type: string,
+  mime_type: string,
+  time_added: Date
 }

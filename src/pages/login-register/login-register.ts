@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { MediaProvider } from "../../providers/media/media";
-import { LoginResponse, User } from "../../interface/pic";
-import { HomePage } from "../home/home";
+import { MediaProvider } from '../../providers/media/media';
+import { LoginResponse, User } from '../../interface/pic';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the LoginRegisterPage page.
@@ -17,7 +17,7 @@ import { HomePage } from "../home/home";
 })
 export class LoginRegisterPage {
 
-  user: User = {username: null};
+  user: User = { username: null };
   registering: boolean = false;
 
   constructor(
@@ -31,21 +31,22 @@ export class LoginRegisterPage {
 
   }
 
-  login(){
+  login() {
     this.mediaProvider.login(this.user).subscribe(
-      (response: LoginResponse)=> {
+      (response: LoginResponse) => {
         console.log(response);
         this.mediaProvider.loggedIn = true;
-        localStorage.setItem("token", response.token);
+        localStorage.setItem('token', response.token);
+        localStorage.setItem('user_id', response.user.user_id.toString());
         this.navCtrl.push(HomePage);
       },
       error => {
         console.log(error);
       });
   }
-  register(){
+  register() {
     this.mediaProvider.register(this.user).subscribe(
-      (response: LoginResponse)=> {
+      (response: LoginResponse) => {
         console.log(response);
         this.login()
       },
@@ -53,7 +54,4 @@ export class LoginRegisterPage {
         console.log(error);
       });
   }
-
-  //TODO add register method
-
 }

@@ -15,11 +15,15 @@
 
 <ion-content padding>
   <ion-card *ngIf="(userProfile | async) as item">
+    <ion-thumbnail item-start *ngIf="(imageId | async) as img">
+      <img src= 'http://media.mw.metropolia.fi/wbma/uploads/{{ img.file_id  | thumbnail | async }}' width="100%" height="100%" margin="auto">
+    </ion-thumbnail>
     <ion-item>
       <p>{{item.username}}</p>
     </ion-item>
     <ion-item>
       <p>{{item.email}}</p>
     </ion-item>
+    <button ion-button item-end (click)="logout()">Log out</button>
   </ion-card>
 </ion-content>

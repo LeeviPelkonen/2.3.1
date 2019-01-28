@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AutoLoginResponse, LoginResponse, Pic, User } from '../../interface/pic';
+import { LoginResponse, Pic, Tag, User } from '../../interface/pic';
 
 /*
   Generated class for the MediaProvider provider.
@@ -39,6 +39,15 @@ export class MediaProvider {
         'x-access-token': localStorage.getItem("token")
       })};
     return this.http.get<User>(this.mediaPath + 'users/user/', httpOptions);
+  }
+
+  getTags(tag: string){
+    console.log("getting tags");
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'x-access-token': localStorage.getItem("token")
+      })};
+    return this.http.get<Tag[]>(this.mediaPath + 'tags/' + tag, httpOptions);
   }
 
   register(user: User){
