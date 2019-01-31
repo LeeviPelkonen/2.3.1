@@ -34,14 +34,18 @@ export interface LoginResponse {
 }
 
 export interface Tag {
-  file_id: number,
-  tag: string,
-  user_id: string
-  filename: string,
-  filesize: number,
-  title: string,
-  description: string,
-  media_type: string,
-  mime_type: string,
-  time_added: Date
+  file_id: number;
+  tag: string;
+  user_id: string;
+  filename: string;
+  filesize: number;
+  title: string;
+  description: string;
+  media_type: string;
+  mime_type: string;
+  time_added: Date;
+}
+export interface UsernameStatus {
+  username: string;
+  available: boolean;
 }

@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LoginResponse, Pic, Tag, User } from '../../interface/pic';
+import { LoginResponse, Pic, Tag, User, UsernameStatus } from '../../interface/pic';
 
 /*
   Generated class for the MediaProvider provider.
@@ -10,7 +10,7 @@ import { LoginResponse, Pic, Tag, User } from '../../interface/pic';
 */
 @Injectable()
 export class MediaProvider {
-  loggedIn: boolean = false;
+  loggedIn = false;
   picArray: Pic[] = [];
   mediaPath = 'http://media.mw.metropolia.fi/wbma/';
 
@@ -24,7 +24,7 @@ export class MediaProvider {
     return this.http.get<Pic>(this.mediaPath + 'media/' + id);
   }
 
-  login(user: User){
+  login(user: User) {
     const httpOptions = {
       headers: new HttpHeaders({
         'content-type': 'application/json'
@@ -32,25 +32,29 @@ export class MediaProvider {
     return this.http.post<LoginResponse>(this.mediaPath + 'login/', user, httpOptions);
   }
 
-  getUser(){
-    console.log("getting user");
+  getUsername(username: string) {
+    return this.http.get<UsernameStatus>(this.mediaPath + 'users/username/' + username);
+  }
+
+  getUser() {
+    console.log('getting user');
     const httpOptions = {
       headers: new HttpHeaders({
-        'x-access-token': localStorage.getItem("token")
+        'x-access-token': localStorage.getItem('token')
       })};
     return this.http.get<User>(this.mediaPath + 'users/user/', httpOptions);
   }
 
-  getTags(tag: string){
-    console.log("getting tags");
+  getTags(tag: string) {
+    console.log('getting tags');
     const httpOptions = {
       headers: new HttpHeaders({
-        'x-access-token': localStorage.getItem("token")
+        'x-access-token': localStorage.getItem('token')
       })};
     return this.http.get<Tag[]>(this.mediaPath + 'tags/' + tag, httpOptions);
   }
 
-  register(user: User){
+  register(user: User) {
     const httpOptions = {
       headers: new HttpHeaders({
         'content-type': 'application/json'

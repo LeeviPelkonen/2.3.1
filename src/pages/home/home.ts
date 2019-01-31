@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { MediaProvider } from '../../providers/media/media';
 import { Pic } from '../../interface/pic';
-import { Observable } from "rxjs";
+import { Observable } from 'rxjs';
 
 
 @Component({

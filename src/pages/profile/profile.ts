@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { MediaProvider } from "../../providers/media/media";
-import { HomePage } from "../home/home";
-import { Pic, Tag, User } from "../../interface/pic";
-import { Observable } from "rxjs";
+import { MediaProvider } from '../../providers/media/media';
+import { HomePage } from '../home/home';
+import { Pic, Tag, User } from '../../interface/pic';
+import { Observable } from 'rxjs';
 
 /**
  * Generated class for the LogoutPage page.
@@ -28,16 +28,16 @@ export class ProfilePage {
   }
 
   getProfile(){
-    this.userProfile = this.mediaProvider.getUser()
+    this.userProfile = this.mediaProvider.getUser();
     return new Promise((resolve, reject) => {
       this.mediaProvider.getTags("profile").subscribe((response: Tag[]) => {
         function filterTag(imgTag: Tag) {
-          if(imgTag.user_id == localStorage.getItem("user_id")){
-            return true
-          }else return false;
+          return imgTag.user_id == localStorage.getItem("user_id");
         }
-        let tagArray = response.filter(filterTag)
-        this.imageId = this.mediaProvider.getSingleMedia(tagArray[0].file_id)
+        let tagArray = response.filter(filterTag);
+        if(tagArray.length > 0) {
+          this.imageId = this.mediaProvider.getSingleMedia(tagArray[0].file_id)
+        }
       });
     });
   }
