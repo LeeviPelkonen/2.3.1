@@ -17,7 +17,7 @@
 
   <!-- TODO -->
 
-  <form *ngIf="!registering" (ngSubmit)="login()">
+  <form *ngIf="!registering" #loginForm="ngForm" (ngSubmit)="login()">
     <ion-item>
       <ion-label>Username</ion-label>
       <ion-input type="text" [(ngModel)]="user.username" name="username"></ion-input>

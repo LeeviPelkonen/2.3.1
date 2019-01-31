@@ -36,7 +36,7 @@ export class ProfilePage {
         }
         let tagArray = response.filter(filterTag);
         if(tagArray.length > 0) {
-          this.imageId = this.mediaProvider.getSingleMedia(tagArray[0].file_id)
+          this.imageId = this.mediaProvider.getSingleMedia(tagArray[0].file_id);
         }
       });
     });
@@ -45,6 +45,7 @@ export class ProfilePage {
     localStorage.clear();
     this.mediaProvider.loggedIn = false;
     this.navCtrl.push(HomePage);
+    this.imageId = null;
   }
 
 }

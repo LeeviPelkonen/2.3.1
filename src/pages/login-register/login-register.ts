@@ -24,6 +24,7 @@ export class LoginRegisterPage {
   private usernameCheck = true;
   private passMatch = true;
   @ViewChild('registerForm') registerForm;
+  @ViewChild('loginForm') loginForm;
 
   constructor(
     public navCtrl: NavController,
@@ -44,7 +45,13 @@ export class LoginRegisterPage {
         this.mediaProvider.loggedIn = true;
         localStorage.setItem('token', response.token);
         localStorage.setItem('user_id', response.user.user_id.toString());
-        this.registerForm.reset();
+        if(this.registering){
+          this.registerForm.reset();
+          this.registering = false;
+        }
+        else{
+          this.loginForm.reset()
+        }
         this.navCtrl.push(HomePage);
       },
       error => {
