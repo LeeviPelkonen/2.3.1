@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { MediaProvider } from '../../providers/media/media';
 import { Pic } from '../../interface/pic';
 import { Observable } from 'rxjs';
+import { AddMediaPage } from "../add-media/add-media";
 
 
 @Component({
@@ -15,7 +16,7 @@ export class HomePage {
   constructor(public navCtrl: NavController, private mediaProvider: MediaProvider) {
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
     this.getAllFiles();
     console.log('ionViewWillEnterS LoginRegisterPage');
     if (localStorage.getItem("token") != null && this.mediaProvider.loggedIn == false) {
@@ -33,5 +34,8 @@ export class HomePage {
 
   getAllFiles() {
     this.picArray = this.mediaProvider.getAllMedia()
+  }
+  addMedia() {
+    this.navCtrl.push(AddMediaPage);
   }
 }

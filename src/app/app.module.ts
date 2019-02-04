@@ -12,6 +12,7 @@ import { MenuPage } from '../pages/menu/menu';
 import { LoginRegisterPage } from '../pages/login-register/login-register';
 import { ProfilePage } from '../pages/profile/profile';
 import { ThumbnailPipe } from "../pipes/thumbnail/thumbnail";
+import { AddMediaPage } from "../pages/add-media/add-media";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ThumbnailPipe } from "../pipes/thumbnail/thumbnail";
     MenuPage,
     LoginRegisterPage,
     ProfilePage,
-    ThumbnailPipe
+    ThumbnailPipe,
+    AddMediaPage
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,8 @@ import { ThumbnailPipe } from "../pipes/thumbnail/thumbnail";
     HomePage,
     MenuPage,
     LoginRegisterPage,
-    ProfilePage
+    ProfilePage,
+    AddMediaPage
   ],
   providers: [
     StatusBar,

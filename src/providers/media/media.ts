@@ -17,9 +17,11 @@ export class MediaProvider {
   constructor(private http: HttpClient) {
     console.log('Hello MediaProvider Provider');
   }
+
   getAllMedia() {
     return this.http.get<Pic[]>(this.mediaPath + 'media/');
   }
+
   getSingleMedia(id: any) {
     return this.http.get<Pic>(this.mediaPath + 'media/' + id);
   }
@@ -60,5 +62,13 @@ export class MediaProvider {
         'content-type': 'application/json'
       })};
     return this.http.post<LoginResponse>(this.mediaPath + 'users/', user, httpOptions);
+  }
+
+  uploadMedia(data: any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'x-access-token': localStorage.getItem('token')
+      })};
+    return this.http.post<any>(this.mediaPath + 'media/',data, httpOptions);
   }
 }
