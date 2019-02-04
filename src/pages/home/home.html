@@ -4,14 +4,14 @@
       Home
     </ion-title>
     <ion-buttons end>
-      <button ion-button (click)="addMedia()">Upload media</button>
+      <button ion-button *ngIf="mediaProvider.loggedIn" (click)="addMedia()">Upload media</button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let item of picArray | async" (click)="itemSelected(item)">
+    <ion-item *ngFor="let item of picArray | async">
       <ion-thumbnail item-start>
         <img src='http://media.mw.metropolia.fi/wbma/uploads/{{ item.file_id  | thumbnail | async }}' item-start="" width="60" height="60">
       </ion-thumbnail>

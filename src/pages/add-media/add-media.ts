@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, LoadingController, NavController, NavParams } from 'ionic-angular';
 import { MediaProvider } from '../../providers/media/media';
+import { webpack } from "@ionic/app-scripts/dist/webpack";
 
 @IonicPage()
 @Component({
@@ -10,6 +11,12 @@ import { MediaProvider } from '../../providers/media/media';
 
 export class AddMediaPage {
 
+  filters = {
+    'brightness': 100,
+    'saturation': 100,
+    'sepia': 0,
+    'contrast': 100,
+  };
   title = '';
   description = '';
   filedata = '';
@@ -22,6 +29,7 @@ export class AddMediaPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddMediaPage');
+
   }
 
   uploadMedia() {
@@ -29,7 +37,7 @@ export class AddMediaPage {
     this.loading = true;
     const fd = new FormData();
     fd.append('title',this.title);
-    fd.append('description',this.description);
+    fd.append('description',this.description + JSON.stringify(this.filters));
     fd.append('file',this.file);
     this.mediaProvider.uploadMedia(fd).subscribe(
       (response: any) => {
@@ -42,6 +50,9 @@ export class AddMediaPage {
         this.loading = false;
         console.log(error);
       });
+  }
+  filterImage() {
+    return { filter: `brightness(${this.filters.brightness}%) contrast(${this.filters.contrast}%) sepia(${this.filters.sepia}%) saturate(${this.filters.saturation}%)` };
   }
 
   wait(){

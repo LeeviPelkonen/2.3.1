@@ -4,7 +4,7 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<ion-header xmlns:filter="http://www.w3.org/1999/xhtml">
 
   <ion-navbar>
     <ion-title>addMedia</ion-title>
@@ -33,6 +33,33 @@
   </form>
 
   <ion-card>
-    <img #preview [src]="filedata">
+      <img #preview [src]="filedata" [ngStyle]="filterImage()">
   </ion-card>
+    <ion-item>
+      <ion-range min="-200" max="200" [(ngModel)]="filters.saturation" color="secondary">
+        <ion-icon small range-left name="color-fill"></ion-icon>
+        <ion-icon range-right name="color-fill"></ion-icon>
+      </ion-range>
+    </ion-item>
+
+    <ion-item>
+      <ion-range min="0" max="200" step="2" [(ngModel)]="filters.brightness">
+        <ion-icon small range-left name="sunny"></ion-icon>
+        <ion-icon range-right name="sunny"></ion-icon>
+      </ion-range>
+    </ion-item>
+
+  <ion-item>
+    <ion-range min="0" max="200" step="3" [(ngModel)]="filters.contrast">
+      <ion-icon small range-left name="contrast">0</ion-icon>
+      <ion-icon range-right name="contrast">200</ion-icon>
+    </ion-range>
+  </ion-item>
+
+  <ion-item>
+    <ion-range min="0" max="200" step="4" [(ngModel)]="filters.sepia">
+      <ion-icon small range-left name="thermometer">0</ion-icon>
+      <ion-icon range-right name="thermometer">200</ion-icon>
+    </ion-range>
+  </ion-item>
 </ion-content>
