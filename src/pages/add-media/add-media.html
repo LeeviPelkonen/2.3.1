@@ -13,50 +13,50 @@
 
 </ion-header>
 
-
 <ion-content padding>
   <form #mediaForm="ngForm" (submit)="uploadMedia()">
     <h2>Upload Media</h2>
     <ion-item>
       <ion-label color="primary" stacked>Title</ion-label>
-      <ion-input type="text" [(ngModel)]="title" name="title" ></ion-input>
+      <ion-input type="text" [(ngModel)]="title" name="title"  minlength="3" [required] ></ion-input>
     </ion-item>
     <ion-item>
       <ion-label color="primary" stacked>Description</ion-label>
-      <ion-textarea name="description" [(ngModel)]="description" ></ion-textarea>
+      <ion-textarea name="description" [(ngModel)]="description"  minlength="3" [required] ></ion-textarea>
     </ion-item>
-    <ion-item>
+    <ion-buttons>
       <ion-label color="primary" stacked>File</ion-label>
-      <ion-input type="file" name="file" (change)="handleChange($event)"></ion-input>
-    </ion-item>
-    <button ion-button type="submit">Upload</button>
+      <button ion-button type="button" (click)="fileChoose()">Select file!</button>
+    </ion-buttons>
+    <button ion-button type="submit" [disabled]="!fileSelected || !mediaForm.valid">Upload</button>
+    <button ion-button type="button" (click)="resetAll()" >Reset</button>
   </form>
 
   <ion-card>
       <img #preview [src]="filedata" [ngStyle]="filterImage()">
   </ion-card>
-    <ion-item>
+    <ion-item *ngIf="fileSelected">
       <ion-range min="-200" max="200" [(ngModel)]="filters.saturation" color="secondary">
         <ion-icon small range-left name="color-fill"></ion-icon>
         <ion-icon range-right name="color-fill"></ion-icon>
       </ion-range>
     </ion-item>
 
-    <ion-item>
+    <ion-item *ngIf="fileSelected">
       <ion-range min="0" max="200" step="2" [(ngModel)]="filters.brightness">
         <ion-icon small range-left name="sunny"></ion-icon>
         <ion-icon range-right name="sunny"></ion-icon>
       </ion-range>
     </ion-item>
 
-  <ion-item>
+  <ion-item *ngIf="fileSelected">
     <ion-range min="0" max="200" step="3" [(ngModel)]="filters.contrast">
       <ion-icon small range-left name="contrast">0</ion-icon>
       <ion-icon range-right name="contrast">200</ion-icon>
     </ion-range>
   </ion-item>
 
-  <ion-item>
+  <ion-item *ngIf="fileSelected">
     <ion-range min="0" max="200" step="4" [(ngModel)]="filters.sepia">
       <ion-icon small range-left name="thermometer">0</ion-icon>
       <ion-icon range-right name="thermometer">200</ion-icon>

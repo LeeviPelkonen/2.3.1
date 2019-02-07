@@ -13,6 +13,7 @@ import { LoginRegisterPage } from '../pages/login-register/login-register';
 import { ProfilePage } from '../pages/profile/profile';
 import { ThumbnailPipe } from "../pipes/thumbnail/thumbnail";
 import { AddMediaPage } from "../pages/add-media/add-media";
+import { Chooser } from "@ionic-native/chooser";
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { AddMediaPage } from "../pages/add-media/add-media";
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    MediaProvider
+    MediaProvider,
+    Chooser
   ]
 })
 export class AppModule {

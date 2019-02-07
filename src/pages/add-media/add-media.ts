@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, LoadingController, NavController, NavParams } from 'ionic-angular';
 import { MediaProvider } from '../../providers/media/media';
 import { webpack } from "@ionic/app-scripts/dist/webpack";
+import { Chooser } from "@ionic-native/chooser";
 
 @IonicPage()
 @Component({
@@ -22,9 +23,15 @@ export class AddMediaPage {
   filedata = '';
   file;
   loading = false;
+  myBlob = new Blob;
+  fileSelected = false;
   @ViewChild('mediaForm') mediaForm;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private mediaProvider: MediaProvider, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              private mediaProvider: MediaProvider,
+              public loadingCtrl: LoadingController,
+              private chooser: Chooser) {
   }
 
   ionViewDidLoad() {
@@ -38,7 +45,7 @@ export class AddMediaPage {
     const fd = new FormData();
     fd.append('title',this.title);
     fd.append('description',this.description + JSON.stringify(this.filters));
-    fd.append('file',this.file);
+    fd.append('file',this.myBlob);
     this.mediaProvider.uploadMedia(fd).subscribe(
       (response: any) => {
         console.log(response);
@@ -58,12 +65,8 @@ export class AddMediaPage {
   wait(){
     this.loading = false;
     this.mediaForm.reset();
+    this.fileSelected = false;
     this.navCtrl.pop().catch();
-  }
-
-  handleChange($event) {
-    this.file = $event.target.files[0];
-    this.showPreview()
   }
 
   showPreview() {
@@ -73,12 +76,33 @@ export class AddMediaPage {
       this.filedata = reader.result;
     };
 
-    if (this.file.type.includes('video')){
+    if (this.myBlob.type.includes('video')){
       this.filedata ='http://via.placeholder.com/500x200/000?text=video';
-    } else if (this.file.type.includes('audio')){
+    } else if (this.myBlob.type.includes('audio')){
       this.filedata ='http://via.placeholder.com/500x200/000?text=audio';
     } else {
-      reader.readAsDataURL(this.file);
+      reader.readAsDataURL(this.myBlob);
     }
+  }
+
+  fileChoose() {
+    console.log('this is filechoose!');
+    this.chooser.getFile( 'image/*,video/*,audio/*')
+      .then(file => {
+        console.log(file);
+        this.myBlob = new Blob([file.data], {type: file.mediaType});
+        this.fileSelected = true;
+        this.showPreview()
+      })
+      .catch((error: any) => {
+        console.error(error)
+      });
+  };
+
+  resetAll(){
+    this.loading = false;
+    this.mediaForm.reset();
+    this.fileSelected = false;
+    this.filedata = '';
   }
 }

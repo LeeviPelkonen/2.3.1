@@ -43,7 +43,7 @@
     </ion-item>
     <ion-item>
       <ion-label>Re type password</ion-label>
-      <ion-input type="password" [(ngModel)]="passCheck" name="passCheck" (ionBlur)="checkPass()" minlength="5" required></ion-input>
+      <ion-input type="password" [(ngModel)]="passCheck" name="passCheck" (ionChange)="checkPass()" minlength="5" required></ion-input>
     </ion-item>
     <ion-item *ngIf="!passMatch">
       <p>Passwords do not match!</p>
