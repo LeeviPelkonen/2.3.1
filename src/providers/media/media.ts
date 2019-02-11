@@ -71,4 +71,13 @@ export class MediaProvider {
       })};
     return this.http.post<any>(this.mediaPath + 'media/',data, httpOptions);
   }
+
+  getUploader(userId:any) {
+    console.log('getting uploader');
+    const httpOptions = {
+    headers: new HttpHeaders({
+      'x-access-token': localStorage.getItem('token')
+    })};
+    return this.http.get<any>(this.mediaPath + 'users/' + userId, httpOptions);
+  }
 }

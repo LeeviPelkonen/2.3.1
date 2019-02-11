@@ -14,6 +14,8 @@ import { ProfilePage } from '../pages/profile/profile';
 import { ThumbnailPipe } from "../pipes/thumbnail/thumbnail";
 import { AddMediaPage } from "../pages/add-media/add-media";
 import { Chooser } from "@ionic-native/chooser";
+import { PlayerPage } from "../pages/player/player";
+import { PinchZoomModule } from "ngx-pinch-zoom";
 
 @NgModule({
   declarations: [
@@ -23,12 +25,14 @@ import { Chooser } from "@ionic-native/chooser";
     LoginRegisterPage,
     ProfilePage,
     ThumbnailPipe,
-    AddMediaPage
+    AddMediaPage,
+    PlayerPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule
+    HttpClientModule,
+    [PinchZoomModule]
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -37,7 +41,8 @@ import { Chooser } from "@ionic-native/chooser";
     MenuPage,
     LoginRegisterPage,
     ProfilePage,
-    AddMediaPage
+    AddMediaPage,
+    PlayerPage
   ],
   providers: [
     StatusBar,

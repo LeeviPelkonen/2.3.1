@@ -4,6 +4,7 @@ import { MediaProvider } from '../../providers/media/media';
 import { Pic } from '../../interface/pic';
 import { Observable } from 'rxjs';
 import { AddMediaPage } from "../add-media/add-media";
+import { PlayerPage } from "../player/player";
 
 
 @Component({
@@ -35,7 +36,14 @@ export class HomePage {
   getAllFiles() {
     this.picArray = this.mediaProvider.getAllMedia()
   }
+
   addMedia() {
     this.navCtrl.push(AddMediaPage);
+  }
+
+  viewMedia(id: string) {
+    this.navCtrl.push(PlayerPage, {
+      Id: id
+    });
   }
 }
