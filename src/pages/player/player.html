@@ -20,9 +20,9 @@
     </pinch-zoom>
     <video *ngIf="item.media_type === 'video' " width="320" height="240" controls>
       <source [src] = "url + item.filename">
-      Your browser does not support the video.
+      Your device does not support the video.
     </video>
-    <audio *ngIf="item.media_type === 'audio' " [src] = "url + item.filename" ></audio>
+    <audio *ngIf="item.media_type === 'audio' " [src] = "url + item.filename" controls></audio>
     <p>{{ uploader }}</p>
     <p>{{ item.description }}</p>
   </ion-card>

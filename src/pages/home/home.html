@@ -17,7 +17,7 @@
       </ion-thumbnail>
       <h2>{{ item.title }}</h2>
       <p>{{ item.time_added | date: ('dd.MM.yyyy') }}</p>
-      <p>{{ item.description }}</p>
+      <p>{{ takeFilters(item.description) }}</p>
       <button ion-button clear (click)="viewMedia(item.file_id)" item-end>View</button>
     </ion-item>
   </ion-list>

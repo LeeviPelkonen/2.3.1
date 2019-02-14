@@ -46,4 +46,8 @@ export class HomePage {
       Id: id
     });
   }
+
+  takeFilters(des:string){
+    return des.split('{',1)
+  }
 }

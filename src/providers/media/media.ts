@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginResponse, Pic, Tag, User, UsernameStatus } from '../../interface/pic';
+import { Observable } from "rxjs";
 
 /*
   Generated class for the MediaProvider provider.
@@ -79,5 +80,22 @@ export class MediaProvider {
       'x-access-token': localStorage.getItem('token')
     })};
     return this.http.get<any>(this.mediaPath + 'users/' + userId, httpOptions);
+  }
+
+  getMyFiles() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'x-access-token': localStorage.getItem('token')
+      })};
+    return this.http.get<Pic[]>(this.mediaPath + 'media/user', httpOptions);
+  }
+
+  deleteFile(id:string) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'x-access-token': localStorage.getItem('token')
+      })};
+    console.log('deleting this file id ' + id);
+    return this.http.delete<any>(this.mediaPath + 'media/' + id, httpOptions);
   }
 }

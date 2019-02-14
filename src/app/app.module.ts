@@ -16,6 +16,7 @@ import { AddMediaPage } from "../pages/add-media/add-media";
 import { Chooser } from "@ionic-native/chooser";
 import { PlayerPage } from "../pages/player/player";
 import { PinchZoomModule } from "ngx-pinch-zoom";
+import { MyFilesPage } from "../pages/my-files/my-files";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PinchZoomModule } from "ngx-pinch-zoom";
     ProfilePage,
     ThumbnailPipe,
     AddMediaPage,
-    PlayerPage
+    PlayerPage,
+    MyFilesPage
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,8 @@ import { PinchZoomModule } from "ngx-pinch-zoom";
     LoginRegisterPage,
     ProfilePage,
     AddMediaPage,
-    PlayerPage
+    PlayerPage,
+    MyFilesPage
   ],
   providers: [
     StatusBar,

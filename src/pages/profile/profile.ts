@@ -4,6 +4,7 @@ import { MediaProvider } from '../../providers/media/media';
 import { HomePage } from '../home/home';
 import { Pic, Tag, User } from '../../interface/pic';
 import { Observable } from 'rxjs';
+import { MyFilesPage } from "../my-files/my-files";
 
 /**
  * Generated class for the LogoutPage page.
@@ -48,4 +49,7 @@ export class ProfilePage {
     this.imageId = null;
   }
 
+  myFiles(){
+    this.navCtrl.push(MyFilesPage);
+  }
 }
