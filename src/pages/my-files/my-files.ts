@@ -46,7 +46,9 @@ export class MyFilesPage {
   }
 
   deleteMedia(id:string){
-    this.mediaProvider.deleteFile(id);
+    this.mediaProvider.deleteFile(id).subscribe((res => {
+      console.log(res);
+    });
     this.getAllFiles();
   }
 }
